@@ -1,6 +1,6 @@
 // eslint-disable-next-line
 import { UserLayout, BasicLayout, RouteView, BlankLayout, PageView } from '@/layouts'
-import { bxAnaalyse } from '@/core/icons'
+import { bxAnalyse } from '@/core/icons'
 
 export const asyncRouterMap = [
 
@@ -17,7 +17,7 @@ export const asyncRouterMap = [
         name: 'dashboard',
         redirect: '/dashboard/workplace',
         component: RouteView,
-        meta: { title: '仪表盘', keepAlive: true, icon: bxAnaalyse, permission: [ 'dashboard' ] },
+        meta: { title: '仪表盘', keepAlive: true, icon: bxAnalyse, permission: [ 'dashboard' ] },
         children: [
           {
             path: '/dashboard/analysis',
@@ -27,7 +27,7 @@ export const asyncRouterMap = [
           },
           // 外部链接
           {
-            path: 'https://www.baidu.com/',
+            path: 'https://bilibili.com/',
             name: 'Monitor',
             meta: { title: '监控页（外部）', target: '_blank' }
           },
@@ -320,6 +320,24 @@ export const asyncRouterMap = [
                 meta: { title: '权限列表', keepAlive: true }
               }
             ]
+          }
+        ]
+      },
+      // my
+      {
+        path: '/queen',
+        name: 'queen',
+        component: PageView,
+        // permission影响菜单是否显示
+        meta: { title: '束女士', icon: 'user', permission: [ 'dashboard' ] },
+        // redirect是本菜单子项中的某项
+        redirect: '/queen/menstrual',
+        children: [
+          {
+            path: '/queen/menstrual',
+            name: 'QueenMenstrual',
+            component: () => import('@/views/queen/menstrual'),
+            meta: { title: '好友列表', keepAlive: true }
           }
         ]
       }
